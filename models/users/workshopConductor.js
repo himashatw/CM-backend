@@ -16,8 +16,12 @@ const workshopConductorSchema = new mongoose.Schema({
     phoneNo: {
       type: String,
       required: true
-    }
-    //add more
+    },
+    uploads:{
+      type: Buffer,
+      require:true
+       
+   }
 });
 
 const workshopConductor = mongoose.model('workshopConductor', workshopConductorSchema);

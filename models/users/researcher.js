@@ -16,8 +16,12 @@ const ResearcherSchema = new mongoose.Schema({
     phoneNo: {
       type: String,
       required: true
-    }
-    //add more
+    },
+    uploads:{
+      type: Buffer,
+      require:true
+       
+   }
 });
 
 const Researcher = mongoose.model('Researcher', ResearcherSchema);
