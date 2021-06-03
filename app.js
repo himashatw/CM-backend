@@ -11,10 +11,12 @@ const router = require('./routes/user-routes/attendee.router.js')
 // Connect Database
 DBConnection;
 
+//check
 
 app.use('/api/attendee',attendeeRoute);
 app.use('/api/reseacher',researcherRoute);
 app.use('/api/workshopcon',workshopconductorRoute);
+
 
 app.use(express.json());
 app.use('/api/users', router);
