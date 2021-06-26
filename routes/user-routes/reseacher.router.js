@@ -34,7 +34,7 @@ router.post('/add',upload.single('uploads'),fileValidation,async(req,res)=>{
             });
         }
 
-        return res.status(200).send({
+        return res.status(201).send({
             message:'Registered successfully',
             reseacher
         })
