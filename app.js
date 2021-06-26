@@ -11,9 +11,10 @@ const workshopconductorRoute = require('./routes/user-routes/workshopConductor.r
 // Connect Database
 DBConnection;
 
-app.use(cors());
 
+app.use(cors());
 app.use(express.json());
+
 
 app.use('/api/attendee',attendeeRoute);
 app.use('/api/reseacher',researcherRoute);
