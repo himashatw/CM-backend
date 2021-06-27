@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
-
-const researchApproval = new mongoose.Schema({
+const workshopApproval = new mongoose.Schema({
 
     fullName:{
         type :String, 
@@ -23,4 +22,4 @@ const researchApproval = new mongoose.Schema({
     }
 })
 
-module.exports =mongoose.model('researchpaperapprovals', researchApproval);
+module.exports =mongoose.model('workshoppaperapprovals', workshopApproval);
