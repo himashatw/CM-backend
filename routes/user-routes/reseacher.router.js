@@ -29,7 +29,7 @@ router.post('/add',upload.single('uploads'),fileValidation,async(req,res)=>{
 
     await reseacher.save((err,reseacher)=>{
         if(err){
-            return res.send(404).send({
+            return res.status(400).send({
                 errors:err.message
             });
         }
@@ -48,7 +48,7 @@ router.get('/all',async(req,res)=>{
      .then(reseachers =>{
          res.status(200).send({data:reseachers})
      }).catch(error =>{
-         res.status(404).send({error:error.message})
+         res.status(400).send({error:error.message})
      })
 })
 

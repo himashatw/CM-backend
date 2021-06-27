@@ -29,7 +29,7 @@ router.post('/add',upload.single('uploads'),fileValidation,async(req,res)=>{
 
     await workshopconductor.save((err,workshopconductor)=>{
         if(err){
-            return res.send(404).send({
+            return res.status(400).send({
                 errors:err.message
             });
         }
