@@ -4,18 +4,13 @@ const Attendee = require('../../models/users/attendee.js');
 
 router.post('/add', async(req, res) => {
     const attendee = new Attendee(req.body);
-    await attendee.save((err,attendee) =>{
-        if(err){
-            return res.status(404).send({
-                error:err.message
-            });
-        }
-
-        return res.status(200).send({
-            message:'Registered successfully',
-            attendee
-        })
+    await attendee.save()
+    .then(data =>{
+        res.status(201).send({ data: data });
     })
+    .catch(error =>{
+        res.status(400).send({ error: error.message });
+    })    
 })  
 
 router.get('/all',async(req,res)=>{
@@ -23,7 +18,7 @@ router.get('/all',async(req,res)=>{
      .then(attendees =>{
          res.status(200).send({data:attendees})
      }).catch(error =>{
-         res.status(404).send({error:error.message})
+         res.status(400).send({error:error.message})
      })
      
 })
