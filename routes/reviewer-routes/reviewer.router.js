@@ -52,6 +52,44 @@ router.post('/approvedWorkshops',async(req, res)=>{
     }
 })
 
+router.get('/getResearch/:id',async(req, res)=>{
+    await Researcher.findById(req.params.id).then(data=>{
+        res.status(200).send({data: data});
+    }).catch(err=>{
+        res.status(500).send({err: err.message});
+    })
+})
+
+router.get('/getWorkshops/:id',async(req, res)=>{
+    await workshopConductor.findById(req.params.id).then(data=>{
+        res.status(200).send({data: data});
+    }).catch(err=>{
+        res.status(500).send({err: err.message});
+    })
+})
+
+router.delete('/deleteResearch/:id',async (req,res)=>{
+    if(req.params.id){
+        await Researcher.deleteById(req.params.id)
+        .then(data =>{
+            res.status(200).send({data: data});
+        }).catch(err =>{
+            res.status(500).send({err: err.message})
+        })    
+    }
+})
+
+router.delete('/deleteWorkshops/:id',async (req,res)=>{
+    if(req.params.id){
+        await workshopConductor.deleteById(req.params.id)
+        .then(data =>{
+            res.status(200).send({data: data});
+        }).catch(err =>{
+            res.status(500).send({err: err.message})
+        })    
+    }
+})
+
 router.get('/sendNotifications/:id',async(req, res)=>{
 
 })
