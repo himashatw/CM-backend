@@ -55,5 +55,4 @@ router.post('/approvedWorkshops',async(req, res)=>{
 router.get('/sendNotifications/:id',async(req, res)=>{
 
 })
-
 module.exports = router;

@@ -29,12 +29,20 @@ router.post('/add',upload.single('uploads'),fileValidation,async(req,res)=>{
 
     await workshopconductor.save((err,workshopconductor)=>{
         if(err){
+<<<<<<< HEAD
             return res.send(404).send({
+=======
+            return res.status(400).send({
+>>>>>>> master
                 errors:err.message
             });
         }
 
+<<<<<<< HEAD
         return res.status(200).send({
+=======
+        return res.status(201).send({
+>>>>>>> master
             message:'Registered successfully',
             workshopconductor
         })
