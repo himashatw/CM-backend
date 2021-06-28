@@ -21,7 +21,7 @@ router.post('/add',upload.single('uploads'),fileValidation,async(req,res)=>{
 
     const reseacher = new Researcher({
         fullName : fullName,
-        email : email,
+        email :  email,
         password : password,
         phoneNo : phoneNo,
         uploads : uploads

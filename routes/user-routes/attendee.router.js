@@ -18,7 +18,7 @@ router.get('/all',async(req,res)=>{
      .then(attendees =>{
          res.status(200).send({data:attendees})
      }).catch(error =>{
-         res.status(404).send({error:error.message})
+         res.status(400).send({error:error.message})
      })
      
 })
