@@ -35,4 +35,17 @@ router.post("/addnewsapproved", async (req, res) => {
     });
 });
 
+//get all the approved news
+
+router.get("/approvednews", async (req, res) => {
+  console.log("approvednews-GET");
+  ApprovedNews.find({})
+    .then((result) => {
+      res.status(200).json({ result });
+    })
+    .catch((error) => {
+      res.status(422).json({ error });
+    });
+});
+
 module.exports = router;
