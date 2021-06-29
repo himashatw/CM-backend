@@ -13,7 +13,7 @@ const reviewerSchema = new mongoose.Schema({
     },
     phoneNo: {
         type: String,
-        required: false,
+        required: true,
         trim: true
     },
     username: {
