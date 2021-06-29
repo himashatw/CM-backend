@@ -106,6 +106,57 @@ router.get('/getApprovedRe',async (req,res)=>{
     })
 })
 
+//find the not approved posts 
+router.get('/notApprovedResearch',async (req,res)=>{
+    await Researcher.find({approve:false}).then(data =>{
+        res.status(200).send({data: data})
+    }).catch(err =>{
+        res.status(500).send({err: err.message})
+    })
+}) 
+router.get('/notApprovedWorkshop',async (req,res)=>{
+    await workshopConductor.find({approve:false}).then(data =>{
+        res.status(200).send({data: data})
+    }).catch(err =>{
+        res.status(500).send({err: err.message})
+    })
+}) 
+
+router.put('/approveResearch/:id',async (req,res)=>{
+    await Researcher.findByIdAndUpdate(req.params.id,{$set:{approve:true}},{useFindAndModify:false})
+    .then(data =>{
+        res.status(200).send({data:data});
+    }).catch(err =>{
+        res.status(500).send({err: err.message})
+    })
+})
+
+router.put('/approveWorkshop',async(req,res)=>{
+    await workshopConductor.findByIdAndUpdate(req.params.id,{$set:{approve:true}},{useFindAndModify:false})
+    .then(data=>{
+        res.status(200).send({data: data});
+    }).catch(err=>{
+        res.status(500).send({err: err.message})
+    })
+})
+
+router.get('/approvEDResearches',async (req,res)=>{
+    await Researcher.find({approve:true}).then(data =>{
+        res.status(200).send({data:data});
+    }).catch(err=>{
+        res.status(500).send({err: err.message});
+    })
+})
+
+
+router.get('/approvEDWorkshopes',async (req,res)=>{
+    await workshopConductor.find({approve:true}).then(data =>{
+        res.status(200).send({data:data});
+    }).catch(err=>{
+        res.status(500).send({err: err.message})
+    })
+})
+
 router.get('/sendNotifications/:id',async(req, res)=>{
 
 })
