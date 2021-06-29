@@ -22,15 +22,24 @@ router.get('/getResearchPapers',async(req, res)=>{
     })
 })
 
-router.post('/approvedResearchers',async(req,res)=>{
-    if(req.body){
-        const researchPaperApproval = new researchApproval(req.body)
-        researchPaperApproval.save().then((data)=>{
-            res.status(200).send({data: data});
-        }).catch((err)=>{
-            res.status(500).send({err: err.message});
-        })
-    }
+router.post('/approvedResearchers',upload.single('content'),async(req,res)=>{
+
+    const researchersfullName = req.body.researchersfullName
+    const researchersemail = req.body.researchersemail
+    const researchersphoneNo = req.body.researchersphoneNo
+    const content = req.body.content
+
+    const Approval = new researchApproval({
+        researchersfullName : researchersfullName,
+        researchersemail :  researchersemail,
+        researchersphoneNo :researchersphoneNo,
+        content : content
+    });
+    await  Approval.save().then((data)=>{
+        res.status(200).send({data: data});
+    }).catch((err)=>{
+        res.status(500).send({err: err.message})
+    })
 })
 
 router.get('/getworkshopPapers',async(req, res)=>{
@@ -70,7 +79,7 @@ router.get('/getWorkshops/:id',async(req, res)=>{
 
 router.delete('/deleteResearch/:id',async (req,res)=>{
     if(req.params.id){
-        await Researcher.deleteById(req.params.id)
+        await Researcher.findByIdAndDelete(req.params.id)
         .then(data =>{
             res.status(200).send({data: data});
         }).catch(err =>{
@@ -81,13 +90,20 @@ router.delete('/deleteResearch/:id',async (req,res)=>{
 
 router.delete('/deleteWorkshops/:id',async (req,res)=>{
     if(req.params.id){
-        await workshopConductor.deleteById(req.params.id)
+        await workshopConductor.findByIdAndDelete(req.params.id)
         .then(data =>{
             res.status(200).send({data: data});
         }).catch(err =>{
             res.status(500).send({err: err.message})
         })    
     }
+})
+router.get('/getApprovedRe',async (req,res)=>{
+    await researchApproval.find({}).then(data =>{
+        res.status(200).send({data: data})
+    }).catch(err =>{
+        res.staus(500).send({err: err.message})
+    })
 })
 
 router.get('/sendNotifications/:id',async(req, res)=>{
