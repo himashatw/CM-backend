@@ -5,7 +5,7 @@ const News = mongoose.model("News");
 
 //add news
 router.post('/addNews',(req,res)=>{
-    const {title,description} = req.body
+    const {title,description,imageURL} = req.body
     if(!title || !body){
       return  res.status(422).json({error:"Add all the fields"});
     }
