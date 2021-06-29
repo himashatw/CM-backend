@@ -17,6 +17,9 @@ router.post('/add',upload.single('uploads'),fileValidation,async(req,res)=>{
     const email = req.body.email
     const password = req.body.password
     const phoneNo = req.body.phoneNo
+    const workshopTitle = req.body.workshopTitle
+    const workshopData = req.body.workshopData
+    const workshopTime = req.body.workshopTime
     const uploads = req.file.buffer
 
     const workshopconductor = new workshopConductor({
@@ -24,6 +27,9 @@ router.post('/add',upload.single('uploads'),fileValidation,async(req,res)=>{
         email : email,
         password : password,
         phoneNo : phoneNo,
+        workshopTitle:workshopTitle,
+        workshopData:workshopData,
+        workshopTime:workshopTime,
         uploads : uploads
     });
 

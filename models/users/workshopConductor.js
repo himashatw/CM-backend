@@ -21,6 +21,21 @@ const workshopConductorSchema = new mongoose.Schema({
       required: true,
       trim:true
     },
+    workshopTitle: {
+      type: String,
+      required: true,
+      trim:true
+    },
+    workshopData: {
+      type: String,
+      required: true,
+      trim:true
+    },
+    workshopTime: {
+      type: String,
+      required: true,
+      trim:true
+    },
     uploads:{
       type: Buffer,
       require:true
