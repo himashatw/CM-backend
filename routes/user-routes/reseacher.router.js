@@ -17,14 +17,16 @@ router.post('/add', upload.single('uploads'), fileValidation, async (req, res) =
     const email = req.body.email
     const password = req.body.password
     const phoneNo = req.body.phoneNo
+    const approve = req.body.approve
     const uploads = req.file.buffer
 
     const reseacher = new Researcher({
-        fullName: fullName,
-        email: email,
-        password: password,
-        phoneNo: phoneNo,
-        uploads: uploads
+        fullName : fullName,
+        email :  email,
+        password : password,
+        phoneNo : phoneNo,
+        approve : approve,
+        uploads : uploads
     });
 
     await reseacher.save((err, reseacher) => {

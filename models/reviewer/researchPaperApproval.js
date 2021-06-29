@@ -13,12 +13,12 @@ const researchPaperApprovalSchema = new mongoose.Schema({
     },
     researchersphoneNo: {
       type: String,
-      required: true,
+      required: false,
       trim:true
     },
     content:{
-      type: String,
-      require:true
+      type: Buffer,
+      require:false
        
    }
 });
