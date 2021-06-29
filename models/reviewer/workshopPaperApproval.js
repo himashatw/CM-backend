@@ -17,7 +17,7 @@ const workshopPaperApprovalSchema = new mongoose.Schema({
       trim:true
     },
     content:{
-      type: String,
+      type: Buffer,
       require:true
        
    }
