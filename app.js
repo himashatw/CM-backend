@@ -32,8 +32,11 @@ app.use("/api", require("./routes/adminRoutes/news"));
 app.use("/api", require("./routes/adminRoutes/stats"));
 
 //editor routes
-const editorRoute = require("./routes/editorRoutes/news");
-app.use("/api/editor", editorRoute);
+const editorRouteNews = require("./routes/editorRoutes/news");
+app.use("/api/editor", editorRouteNews);
+const editorRouteSpeaker = require("./routes/editorRoutes/speakers");
+app.use("/api/editor", editorRouteSpeaker);
+
 
 const PORT = 8080;
 
