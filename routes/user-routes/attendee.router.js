@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Attendee = require('../../models/users/attendee.js');
 
+//add new attendee
 router.post('/add', async (req, res) => {
     const attendee = new Attendee(req.body);
     await attendee.save()
@@ -13,6 +14,7 @@ router.post('/add', async (req, res) => {
         })
 })
 
+//get all attendee details
 router.get('/all', async (req, res) => {
     await Attendee.find({})
         .then(attendees => {
@@ -23,6 +25,7 @@ router.get('/all', async (req, res) => {
 
 })
 
+//attendee login
 router.post('/login', async (req, res) => {
     const email = req.body.email;
     const password = req.body.password;
