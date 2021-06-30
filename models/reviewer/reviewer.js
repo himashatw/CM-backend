@@ -16,12 +16,6 @@ const reviewerSchema = new mongoose.Schema({
         required: true,
         trim: true
     },
-    username: {
-        type: String,
-        require: true,
-        trim: true
-
-    },
     password: {
         type: String,
         require: true,

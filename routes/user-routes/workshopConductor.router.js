@@ -20,17 +20,19 @@ router.post('/add', upload.single('uploads'), fileValidation, async (req, res) =
     const workshopTitle = req.body.workshopTitle
     const workshopData = req.body.workshopData
     const workshopTime = req.body.workshopTime
+    const approve = req.body.approve
     const uploads = req.file.buffer
 
     const workshopconductor = new workshopConductor({
-        fullName: fullName,
-        email: email,
-        password: password,
-        phoneNo: phoneNo,
-        workshopTitle: workshopTitle,
-        workshopData: workshopData,
-        workshopTime: workshopTime,
-        uploads: uploads
+        fullName : fullName,
+        email : email,
+        password : password,
+        phoneNo : phoneNo,
+        workshopTitle:workshopTitle,
+        workshopData:workshopData,
+        workshopTime:workshopTime,
+        approve:approve,
+        uploads : uploads
     });
 
     await workshopconductor.save((err, workshopconductor) => {
