@@ -5,14 +5,13 @@ const News = mongoose.model("News");
 
 //add news
 router.post('/addNews',(req,res)=>{
-    const {title,description,imageURL} = req.body
-    if(!title || !body){
-      return  res.status(422).json({error:"Add all the fields"});
-    }
+     const {title,description,imgURL} = req.body
+    // const {imgURL} = req.body
+    // console.log(imgURL)
     const news = new News ({
-      title,
-      description,
-      imageURL
+      title:title,
+      description:description,
+      imgURL:imgURL
     })
     news.save().then(result=>{
       res.json({news:result})
