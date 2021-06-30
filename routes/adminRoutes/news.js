@@ -16,7 +16,7 @@ router.get("/pendingnews", async (req, res) => {
     });
 });
 
-//post approved news
+//post approved news and delete from the pending
 router.post("/addnewsapproved", async (req, res) => {
   console.log("addnewsapproved-POST");
   const { title, description, imgURL } = req.body;
@@ -31,6 +31,31 @@ router.post("/addnewsapproved", async (req, res) => {
       res.status(200).json({ result });
     })
     .catch((error) => {
+      res.status(422).json({ error });
+    });
+});
+
+//get all the approved news
+router.get("/approvednews", async (req, res) => {
+  console.log("approvednews-GET");
+  ApprovedNews.find({})
+    .then((result) => {
+      res.status(200).json({ result });
+    })
+    .catch((error) => {
+      res.status(422).json({ error });
+    });
+});
+
+//delete the pending news
+router.delete("/deletepending", async (req, res) => {
+  console.log(req.query.id);
+  await News.findByIdAndDelete(req.query.id)
+    .then((result) => {
+      res.status(200).json({ result });
+    })
+    .catch((error) => {
+      console.log("error");
       res.status(422).json({ error });
     });
 });
