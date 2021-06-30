@@ -48,4 +48,11 @@ router.put('/updateNews/:id', (req, res) => {
     .catch(err => console.log(err))
 })
 
+//delete the news post
+router.delete('/deleteNews/:id', (req, res) => {
+  News.findByIdAndDelete(req.params.id)
+    .then(() => res.json("deleted!"))
+    .catch(err => console.log(err))
+})
+
 module.exports = router;
