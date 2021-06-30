@@ -30,13 +30,13 @@ app.use("/api/reviewerValidate", reviewerValidate);
 //admin routes
 app.use("/api", require("./routes/adminRoutes/news"));
 app.use("/api", require("./routes/adminRoutes/stats"));
+app.use("/api", require("./routes/adminRoutes/keynotespeakers"));
 
 //editor routes
 const editorRouteNews = require("./routes/editorRoutes/news");
 app.use("/api/editor", editorRouteNews);
 const editorRouteSpeaker = require("./routes/editorRoutes/speakers");
 app.use("/api/editor", editorRouteSpeaker);
-
 
 const PORT = 8080;
 
