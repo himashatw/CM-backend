@@ -131,7 +131,7 @@ router.put('/approveResearch/:id',async (req,res)=>{
     })
 })
 
-router.put('/approveWorkshop',async(req,res)=>{
+router.put('/approveWorkshop/:id',async(req,res)=>{
     await workshopConductor.findByIdAndUpdate(req.params.id,{$set:{approve:true}},{useFindAndModify:false})
     .then(data=>{
         res.status(200).send({data: data});

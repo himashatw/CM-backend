@@ -12,12 +12,27 @@ router.post('/register',async (req, res) => {
     })
 })
 
-router.get('/login/:username/:password', async(req, res)=>{
-    await ResercherModel.find({username :req.params.username,password:req.params.password})
-    .then((data)=>{
-        res.staus(200).send({data: data});
-    }).catch((err) =>{
-        res.status(500).send({err:err.message});
+router.post('/login', async (req, res) => {
+    const email = req.body.email;
+    const password = req.body.password;
+
+    await ResercherModel.findOne({ email: email, password: password }, (err, research) => {
+        if(err){
+            console.log(err)
+            return res.status(500).send({
+                errors:err.message
+            });
+        }
+
+        if(!research){
+            return res.status(404).send({
+                message:'email or password is mismatch!',
+            });
+        }
+
+        return res.status(200).send({
+            message:'Login successfully'
+        })
     })
 })
 
