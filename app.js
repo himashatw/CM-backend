@@ -31,6 +31,7 @@ app.use("/api/reviewerValidate", reviewerValidate);
 app.use("/api", require("./routes/adminRoutes/news"));
 app.use("/api", require("./routes/adminRoutes/stats"));
 app.use("/api", require("./routes/adminRoutes/keynotespeakers"));
+app.use("/api", require("./routes/adminRoutes/addusers"));
 
 //editor routes
 const editorRouteNews = require("./routes/editorRoutes/news");
