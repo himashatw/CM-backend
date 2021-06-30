@@ -16,10 +16,10 @@ router.get("/pendingnews", async (req, res) => {
     });
 });
 
-//post approved news
+//post approved news and delete from the pending
 router.post("/addnewsapproved", async (req, res) => {
   console.log("addnewsapproved-POST");
-  const { title, description, imgURL } = req.body;
+  const { title, description, imgURL, id } = req.body;
   if (!title || !description || !imgURL) {
     return res.status(422).json({ error: "Fill all the fields" });
   }
@@ -36,7 +36,6 @@ router.post("/addnewsapproved", async (req, res) => {
 });
 
 //get all the approved news
-
 router.get("/approvednews", async (req, res) => {
   console.log("approvednews-GET");
   ApprovedNews.find({})
@@ -46,6 +45,11 @@ router.get("/approvednews", async (req, res) => {
     .catch((error) => {
       res.status(422).json({ error });
     });
+});
+
+//delete the pending news
+router.delete("/deletepending", async (req, res) => {
+  console.log(req.query.id);
 });
 
 module.exports = router;

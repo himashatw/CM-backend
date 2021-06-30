@@ -1,21 +1,20 @@
 const mongoose = require("mongoose");
 
-const NewsSchema = new mongoose.Schema({
-  title: {
+const SpeakerSchema = new mongoose.Schema({
+  name: {
     type: String,
-    required: true,
+    require: true,
     trim: true,
   },
   description: {
     type: String,
-    required: false,
+    require: true,
     trim: true,
   },
   imgURL: {
     type: String,
-    required: false,
+    require: true,
     trim: true,
   },
 });
-
-mongoose.model("News", NewsSchema);
+mongoose.model("Speaker", SpeakerSchema);
