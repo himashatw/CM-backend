@@ -13,6 +13,8 @@ const reviewerValidate = require("./routes/reviewer-routes/reviewerValidate.rout
 require("./models/News/News");
 require("./models/News/ApprovedNews");
 
+
+
 // Connect Database
 DBConnection;
 
@@ -23,9 +25,19 @@ app.use("/api/attendee", attendeeRoute);
 app.use("/api/reseacher", researcherRoute);
 app.use("/api/workshopcon", workshopconductorRoute);
 app.use("/api/reviewer", reviewerRoute);
+
 app.use("/api/reviewerValidate",reviewerValidate)
+
 //admin routes
 app.use("/api", require("./routes/adminRoutes/news"));
+
+
+//editor routes
+const editorRoute = require("./routes/editorRoutes/news");
+app.use("/api/editor",editorRoute);
+
+
+
 
 const PORT = 8080;
 
