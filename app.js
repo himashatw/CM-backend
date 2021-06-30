@@ -8,6 +8,8 @@ const researcherRoute = require("./routes/user-routes/reseacher.router.js");
 const attendeeRoute = require("./routes/user-routes/attendee.router.js");
 const workshopconductorRoute = require("./routes/user-routes/workshopConductor.router");
 const reviewerRoute = require("./routes/reviewer-routes/reviewer.router.js");
+const reviewerValidate = require("./routes/reviewer-routes/reviewerValidate.router")
+
 require("./models/News/News");
 require("./models/News/ApprovedNews");
 
@@ -24,6 +26,7 @@ app.use("/api/reseacher", researcherRoute);
 app.use("/api/workshopcon", workshopconductorRoute);
 app.use("/api/reviewer", reviewerRoute);
 
+app.use("/api/reviewerValidate",reviewerValidate)
 
 //admin routes
 app.use("/api", require("./routes/adminRoutes/news"));

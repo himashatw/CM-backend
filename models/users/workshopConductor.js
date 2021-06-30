@@ -36,6 +36,10 @@ const workshopConductorSchema = new mongoose.Schema({
       required: true,
       trim:true
     },
+    approve:{
+      type: Boolean,
+      required: false,
+    },
     uploads:{
       type: Buffer,
       require:true
