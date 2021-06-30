@@ -49,4 +49,11 @@ router.put('/updateSpeaker/:id', (req, res) => {
     .catch(err => console.log(err))
 })
 
+//delete the speaker
+router.delete('/deleteSpeaker/:id', (req, res) => {
+  Speaker.findByIdAndDelete(req.params.id)
+    .then(() => res.json("deleted!"))
+    .catch(err => console.log(err))
+})
+
 module.exports = router;
