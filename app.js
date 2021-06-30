@@ -8,12 +8,11 @@ const researcherRoute = require("./routes/user-routes/reseacher.router.js");
 const attendeeRoute = require("./routes/user-routes/attendee.router.js");
 const workshopconductorRoute = require("./routes/user-routes/workshopConductor.router");
 const reviewerRoute = require("./routes/reviewer-routes/reviewer.router.js");
-const reviewerValidate = require("./routes/reviewer-routes/reviewerValidate.router")
+const reviewerValidate = require("./routes/reviewer-routes/reviewerValidate.router");
 
 require("./models/News/News");
 require("./models/News/ApprovedNews");
-
-
+require("./models/Speakers/Speaker");
 
 // Connect Database
 DBConnection;
@@ -26,18 +25,15 @@ app.use("/api/reseacher", researcherRoute);
 app.use("/api/workshopcon", workshopconductorRoute);
 app.use("/api/reviewer", reviewerRoute);
 
-app.use("/api/reviewerValidate",reviewerValidate)
+app.use("/api/reviewerValidate", reviewerValidate);
 
 //admin routes
 app.use("/api", require("./routes/adminRoutes/news"));
-
+app.use("/api", require("./routes/adminRoutes/stats"));
 
 //editor routes
 const editorRoute = require("./routes/editorRoutes/news");
-app.use("/api/editor",editorRoute);
-
-
-
+app.use("/api/editor", editorRoute);
 
 const PORT = 8080;
 
