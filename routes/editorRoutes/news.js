@@ -5,7 +5,7 @@ const News = mongoose.model("News");
 
 //add news
 router.post('/addNews',(req,res)=>{
-     const {title,description,imgURL} = req.body
+    // const {title,description,imgURL} = req.body
     // const {imgURL} = req.body
     // console.log(imgURL)
     const news = new News ({
@@ -21,7 +21,7 @@ router.post('/addNews',(req,res)=>{
     })
 })
 
-//get all posts
+//get all added posts
 router.get('/viewNews',(req,res)=>{
   News.find().then(news =>{
     res.json({news})
