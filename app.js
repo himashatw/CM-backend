@@ -24,10 +24,16 @@ app.use("/api/attendee", attendeeRoute);
 app.use("/api/reseacher", researcherRoute);
 app.use("/api/workshopcon", workshopconductorRoute);
 app.use("/api/reviewer", reviewerRoute);
+
 app.use("/api/reviewerValidate", reviewerValidate);
+
 //admin routes
 app.use("/api", require("./routes/adminRoutes/news"));
 app.use("/api", require("./routes/adminRoutes/stats"));
+
+//editor routes
+const editorRoute = require("./routes/editorRoutes/news");
+app.use("/api/editor", editorRoute);
 
 const PORT = 8080;
 

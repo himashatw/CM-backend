@@ -4,18 +4,19 @@ const NewsSchema = new mongoose.Schema({
   title: {
     type: String,
     required: true,
-    trim: true,
+    trim: true
   },
   description: {
     type: String,
     required: false,
-    trim: true,
+    trim: true
   },
   imgURL: {
     type: String,
     required: false,
-    trim: true,
-  },
+    trim: true
+  }
 });
+
 
 mongoose.model("News", NewsSchema);
